@@ -1,0 +1,33 @@
+@keyframes onDragStart {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.tier-object {
+  height: 196px;
+  width: 196px;
+  margin: 1px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0.5em;
+
+  &--dragged {
+    box-shadow: 3px 3px 15px 0px rgba(50, 50, 50, 0.75);
+    animation: onDragStart 200ms;
+    transform: scale(1.1);
+  }
+}

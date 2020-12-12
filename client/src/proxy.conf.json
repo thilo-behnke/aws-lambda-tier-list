@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://bjyf4o6agb.execute-api.eu-central-1.amazonaws.com/Prod/",
+    "pathRewrite": { "^/api": "" },
+    "changeOrigin": true,
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

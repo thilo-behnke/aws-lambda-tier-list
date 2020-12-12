@@ -1,0 +1,11 @@
+.app-wrapper {
+  padding: 1em;
+  display: flex;
+  flex-flow: column;
+  height: 90vh;
+
+  > button {
+    margin: 1em 0;
+    align-self: flex-end;
+  }
+}

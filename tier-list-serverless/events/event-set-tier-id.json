@@ -1,0 +1,4 @@
+{
+  "httpMethod": "PATCH",
+  "body": "{\"id\": \"id1\",\"tierId\": \"1\"}"
+}

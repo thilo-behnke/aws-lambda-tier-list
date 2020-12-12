@@ -1,0 +1,15 @@
+<div class="app-wrapper">
+  <button
+    class="btn btn-primary"
+    (click)="openCreateTierObjectDialog(createTierObject)"
+  >
+    Create Tier Object
+  </button>
+  <app-tier-list></app-tier-list>
+</div>
+
+<ng-template #createTierObject>
+  <app-create-tier-object-form
+    (dismiss)="closeDialog()"
+  ></app-create-tier-object-form>
+</ng-template>

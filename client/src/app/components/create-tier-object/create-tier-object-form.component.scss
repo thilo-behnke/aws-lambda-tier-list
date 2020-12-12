@@ -1,0 +1,14 @@
+.tier-object-form {
+  display: flex;
+  flex-flow: column;
+  padding: 2em;
+
+  &__buttons {
+    display: flex;
+    align-self: flex-end;
+
+    > * + * {
+      margin-left: 0.5em;
+    }
+  }
+}

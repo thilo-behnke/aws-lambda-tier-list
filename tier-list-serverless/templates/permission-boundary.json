@@ -1,0 +1,49 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "*"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:eu-central-1:$PARTITION:table/tier-list-serverless-TierObjectTable*",
+        "arn:aws:dynamodb:eu-central-1:$PARTITION:table/tier-list-serverless-TierTable*",
+        "arn:aws:lambda:eu-central-1:$PARTITION:function:tier-list-serverless-getAllItems*",
+        "arn:aws:lambda:eu-central-1:$PARTITION:function:tier-list-serverless-getById*",
+        "arn:aws:lambda:eu-central-1:$PARTITION:function:tier-list-serverless-putItem*",
+        "arn:aws:lambda:eu-central-1:$PARTITION:function:tier-list-serverless-setTierId*",
+        "arn:aws:lambda:eu-central-1:192687425933:function:tier-list-serverless-createTierObject*"
+      ],
+      "Effect": "Allow",
+      "Sid": "StackResources"
+    },
+    {
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:DescribeLogGroups",
+        "logs:PutLogEvents",
+        "xray:Put*"
+      ],
+      "Resource": "*",
+      "Effect": "Allow",
+      "Sid": "StaticPermissions"
+    },
+    {
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestTag/aws:cloudformation:stack-name": [
+            "tier-list-serverless"
+          ]
+        },
+        "ForAllValues:StringEquals": {
+          "aws:TagKeys": "aws:cloudformation:stack-name"
+        }
+      },
+      "Action": "*",
+      "Resource": "*",
+      "Effect": "Allow",
+      "Sid": "StackResourcesTagging"
+    }
+  ]
+}

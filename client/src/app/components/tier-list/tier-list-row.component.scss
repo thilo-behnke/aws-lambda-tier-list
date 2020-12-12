@@ -1,0 +1,32 @@
+.tier-row {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  background-color: grey;
+
+  &__name {
+    font-size: 2em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid black;
+  }
+
+  &__content {
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    background-color: lightgrey;
+
+    > * {
+      height: 100%;
+    }
+
+    > * + * {
+      margin-left: 5px;
+    }
+  }
+}

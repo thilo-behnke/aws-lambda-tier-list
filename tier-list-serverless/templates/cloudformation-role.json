@@ -1,0 +1,451 @@
+{
+  "Statement": [
+    {
+      "Action": [
+        "s3:GetObject",
+        "s3:GetObjectVersion"
+      ],
+      "Resource": [
+        "arn:aws:s3:::aws-eu-central-1-$PARTITION-tier-list-serverless-pipe",
+        "arn:aws:s3:::aws-eu-central-1-$PARTITION-tier-list-serverless-pipe/*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "lambda:CreateAlias",
+        "lambda:CreateFunction",
+        "lambda:DeleteAlias",
+        "lambda:DeleteFunction",
+        "lambda:DeleteFunctionConcurrency",
+        "lambda:DeleteLayerVersion",
+        "lambda:DeleteProvisionedConcurrencyConfig",
+        "lambda:GetEventSourceMapping",
+        "lambda:GetFunction",
+        "lambda:GetFunctionConfiguration",
+        "lambda:GetLayerVersion",
+        "lambda:ListTags",
+        "lambda:ListVersionsByFunction",
+        "lambda:PublishLayerVersion",
+        "lambda:PublishVersion",
+        "lambda:PutFunctionConcurrency",
+        "lambda:PutProvisionedConcurrencyConfig",
+        "lambda:TagResource",
+        "lambda:UntagResource",
+        "lambda:UpdateAlias",
+        "lambda:UpdateFunctionCode",
+        "lambda:UpdateFunctionConfiguration"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "lambda:AddPermission",
+        "lambda:DeleteFunctionEventInvokeConfig",
+        "lambda:InvokeFunction",
+        "lambda:PutFunctionEventInvokeConfig",
+        "lambda:RemovePermission",
+        "lambda:UpdateFunctionEventInvokeConfig"
+      ],
+      "Resource": "arn:aws:lambda:eu-central-1:$PARTITION:function:tier-list-serverless-*",
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "ArnEquals": {
+          "lambda:FunctionArn": "arn:aws:lambda:eu-central-1:$PARTITION:function:tier-list-serverless-*"
+        }
+      },
+      "Action": [
+        "lambda:CreateEventSourceMapping",
+        "lambda:DeleteEventSourceMapping",
+        "lambda:UpdateEventSourceMapping"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "lambda:AddLayerVersionPermission",
+        "lambda:RemoveLayerVersionPermission"
+      ],
+      "Resource": "arn:aws:lambda:eu-central-1:$PARTITION:layer:tier-list-serverless-*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "apigateway:DELETE",
+        "apigateway:GET",
+        "apigateway:PATCH",
+        "apigateway:POST",
+        "apigateway:PUT",
+        "apigateway:UpdateRestApiPolicy"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "dynamodb:CreateTable",
+        "dynamodb:DeleteTable",
+        "dynamodb:DescribeContinuousBackups",
+        "dynamodb:DescribeStream",
+        "dynamodb:DescribeTable",
+        "dynamodb:DescribeTimeToLive",
+        "dynamodb:ListTagsOfResource",
+        "dynamodb:TagResource",
+        "dynamodb:UntagResource",
+        "dynamodb:UpdateContinuousBackups",
+        "dynamodb:UpdateTable",
+        "dynamodb:UpdateTimeToLive"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "events:DeleteRule",
+        "events:DescribeRule",
+        "events:ListTagsForResource",
+        "events:PutRule",
+        "events:PutTargets",
+        "events:PutPermission",
+        "events:RemoveTargets",
+        "events:RemovePermission",
+        "events:TagResource",
+        "events:UntagResource"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "kinesis:AddTagsToStream",
+        "kinesis:CreateStream",
+        "kinesis:DecreaseStreamRetentionPeriod",
+        "kinesis:DeleteStream",
+        "kinesis:DescribeStream",
+        "kinesis:IncreaseStreamRetentionPeriod",
+        "kinesis:RemoveTagsFromStream",
+        "kinesis:StartStreamEncryption",
+        "kinesis:StopStreamEncryption",
+        "kinesis:UpdateShardCount"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "s3:CreateBucket",
+        "s3:DeleteBucket",
+        "s3:DeleteBucketWebsite",
+        "s3:PutAccelerateConfiguration",
+        "s3:PutAnalyticsConfiguration",
+        "s3:PutBucketAcl",
+        "s3:PutBucketCORS",
+        "s3:PutBucketLogging",
+        "s3:PutBucketNotification",
+        "s3:PutBucketPublicAccessBlock",
+        "s3:PutBucketVersioning",
+        "s3:PutBucketWebsite",
+        "s3:PutEncryptionConfiguration",
+        "s3:PutInventoryConfiguration",
+        "s3:PutLifecycleConfiguration",
+        "s3:PutMetricsConfiguration",
+        "s3:PutReplicationConfiguration"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "s3:PutBucketPolicy"
+      ],
+      "Resource": "arn:aws:s3:::bucket/tier-list-serverless-*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "sns:CreateTopic",
+        "sns:DeleteTopic",
+        "sns:GetTopicAttributes",
+        "sns:ListSubscriptionsByTopic",
+        "sns:ListTopics",
+        "sns:SetSubscriptionAttributes",
+        "sns:Subscribe",
+        "sns:Unsubscribe"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "sqs:CreateQueue",
+        "sqs:DeleteQueue",
+        "sqs:GetQueueAttributes",
+        "sqs:GetQueueUrl",
+        "sqs:ListQueueTags",
+        "sqs:TagQueue",
+        "sqs:UntagQueue"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "iam:PassRole"
+      ],
+      "Resource": [
+        "arn:aws:iam::$PARTITION:role/tier-list-serverless-*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "cloudformation:CreateChangeSet"
+      ],
+      "Resource": [
+        "arn:aws:cloudformation:eu-central-1:aws:transform/Serverless-2016-10-31"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "iam:CreateServiceLinkedRole",
+        "iam:DeleteRole",
+        "iam:GetRole",
+        "iam:GetRolePolicy",
+        "iam:PutRolePolicy"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "StringEquals": {
+          "iam:PermissionsBoundary": "arn:aws:iam::$PARTITION:policy/tier-list-serverless-eu-central-1-PermissionsBoundary"
+        }
+      },
+      "Action": [
+        "iam:AttachRolePolicy",
+        "iam:CreateRole",
+        "iam:DeleteRolePolicy",
+        "iam:DetachRolePolicy",
+        "iam:PutRolePermissionsBoundary"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "kms:CreateKey",
+        "kms:CreateAlias",
+        "kms:DeleteAlias",
+        "kms:DisableKey",
+        "kms:EnableKey",
+        "kms:UpdateAlias",
+        "kms:TagResource",
+        "kms:UntagResource"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "cloudwatch:DeleteAlarms",
+        "cloudwatch:DeleteDashboards",
+        "cloudwatch:DisableAlarmActions",
+        "cloudwatch:EnableAlarmActions",
+        "cloudwatch:GetDashboard",
+        "cloudwatch:ListTagsForResource",
+        "cloudwatch:PutDashboard",
+        "cloudwatch:PutMetricAlarm",
+        "cloudwatch:PutMetricData",
+        "cloudwatch:SetAlarmState",
+        "cloudwatch:TagResource",
+        "cloudwatch:UntagResource"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "logs:*"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "codedeploy:CreateApplication",
+        "codedeploy:CreateDeployment",
+        "codedeploy:CreateDeploymentConfig",
+        "codedeploy:CreateDeploymentGroup",
+        "codedeploy:DeleteApplication",
+        "codedeploy:DeleteDeployment",
+        "codedeploy:DeleteDeploymentConfig",
+        "codedeploy:DeleteDeploymentGroup",
+        "codedeploy:GetDeployment",
+        "codedeploy:GetDeploymentConfig",
+        "codedeploy:GetDeploymentGroup",
+        "codedeploy:PutLifecycleEventHookExecutionStatus",
+        "codedeploy:RegisterApplicationRevision",
+        "codedeploy:StopDeployment",
+        "codedeploy:UpdateApplication",
+        "codedeploy:UpdateDeploymentGroup"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "firehose:CreateDeliveryStream",
+        "firehose:DeleteDeliveryStream",
+        "firehose:DescribeDeliveryStream",
+        "firehose:ListDeliveryStreams",
+        "firehose:ListTagsForDeliveryStream",
+        "firehose:PutRecord",
+        "firehose:PutRecordBatch",
+        "firehose:StartDeliveryStreamEncryption",
+        "firehose:StopDeliveryStreamEncryption",
+        "firehose:TagDeliveryStream",
+        "firehose:UntagDeliveryStream",
+        "firehose:UpdateDestination"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "secretsmanager:CreateSecret",
+        "secretsmanager:GetRandomPassword",
+        "secretsmanager:GetResourcePolicy",
+        "secretsmanager:ListSecrets",
+        "secretsmanager:CancelRotateSecret",
+        "secretsmanager:DeleteSecret",
+        "secretsmanager:DescribeSecret",
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:ListSecretVersionIds",
+        "secretsmanager:PutSecretValue",
+        "secretsmanager:RestoreSecret",
+        "secretsmanager:RotateSecret",
+        "secretsmanager:TagResource",
+        "secretsmanager:UntagResource",
+        "secretsmanager:UpdateSecret",
+        "secretsmanager:UpdateSecretVersionStage"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestTag/aws:cloudformation:stack-name": [
+            "tier-list-serverless"
+          ]
+        },
+        "ForAllValues:StringEquals": {
+          "aws:TagKeys": "aws:cloudformation:stack-name"
+        }
+      },
+      "Action": [
+        "secretsmanager:DeleteResourcePolicy",
+        "secretsmanager:PutResourcePolicy"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "glue:List*",
+        "glue:CreateDatabase",
+        "glue:DeleteDatabase",
+        "glue:GetDatabase",
+        "glue:GetDatabases",
+        "glue:UpdateDatabase",
+        "glue:CreateTable",
+        "glue:DeleteTable",
+        "glue:DeleteTableVersions",
+        "glue:GetTable",
+        "glue:GetTables",
+        "glue:GetTableVersion",
+        "glue:GetTableVersions",
+        "glue:UpdateTable"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "ssm:DescribeParameters",
+        "ssm:AddTagsToResource",
+        "ssm:DeleteParameter",
+        "ssm:DeleteParameters",
+        "ssm:DescribeDocumentParameters",
+        "ssm:LabelParameterVersion",
+        "ssm:GetParameter",
+        "ssm:GetParameterHistory",
+        "ssm:GetParameters",
+        "ssm:GetParametersByPath",
+        "ssm:PutParameter",
+        "ssm:RemoveTagsFromResource"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "states:CreateActivity",
+        "states:GetActivityTask",
+        "states:DeleteActivity",
+        "states:DescribeActivity",
+        "states:ListActivities",
+        "states:SendTaskHeartbeat",
+        "states:SendTaskFailure",
+        "states:SendTaskSuccess",
+        "states:TagResource",
+        "states:UntagResource"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "ec2:DescribeAccountAttributes",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "rds:AddRoleToDBInstance",
+        "rds:CreateDBInstance",
+        "rds:CreateDBInstanceReadReplica",
+        "rds:DeleteDBInstance",
+        "rds:DownloadCompleteDBLogFile",
+        "rds:DownloadDBLogFilePortion",
+        "rds:Describe*",
+        "rds:ListTagsForResource",
+        "rds:ModifyDBInstance",
+        "rds:ModifyDBSnapshot",
+        "rds:ModifyDBSnapshotAttribute",
+        "rds:PromoteReadReplica",
+        "rds:PurchaseReservedDBInstancesOffering",
+        "rds:RebootDBInstance",
+        "rds:RemoveRoleFromDBInstance",
+        "rds:RemoveTagsFromResource",
+        "rds:RestoreDBInstanceFromDBSnapshot",
+        "rds:RestoreDBInstanceFromS3",
+        "rds:RestoreDBInstanceToPointInTime",
+        "rds:StartDBInstance",
+        "rds:StopDBInstance"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    }
+  ]
+}

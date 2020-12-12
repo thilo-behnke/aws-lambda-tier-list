@@ -1,0 +1,27 @@
+@keyframes onTierUpdate {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0.99);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.tier-grid {
+  height: 100%;
+  display: grid;
+  grid-auto-rows: 200px;
+  grid-row-gap: 5px;
+
+  > * {
+    height: 100%;
+  }
+
+  &--updated {
+    // TODO: I get a headache from this...
+    //animation: onTierUpdate 180ms linear;
+  }
+}
